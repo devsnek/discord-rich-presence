@@ -1,0 +1,25 @@
+{
+  "name": "discord-rich-presence",
+  "version": "1.0.0",
+  "description": "rich presence wrapper for discord-rpc",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devsnek/discord-rich-presence.git"
+  },
+  "keywords": [
+    "discord",
+    "rich",
+    "presence",
+    "rpc"
+  ],
+  "author": "snek <me@gus.host>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devsnek/discord-rich-presence/issues"
+  },
+  "homepage": "https://github.com/devsnek/discord-rich-presence#readme",
+  "dependencies": {
+    "discord-rpc": "^3.0.0-beta.5"
+  }
+}
