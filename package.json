@@ -3,6 +3,8 @@
   "version": "0.0.5",
   "description": "rich presence wrapper for discord-rpc",
   "main": "index.js",
+  "unpkg": "browser.js",
+  "jsdelivr": "browser.js",
   "scripts": {
     "build:browser": "webpack",
     "prepublishOnly": "env NODE_ENV=production npm run build:browser"
@@ -24,7 +26,7 @@
   },
   "homepage": "https://github.com/devsnek/discord-rich-presence#readme",
   "dependencies": {
-    "discord-rpc": "^3.0.0-beta.7"
+    "discord-rpc": "^3.0.0-beta.8"
   },
   "devDependencies": {
     "uglifyjs-webpack-plugin": "^1.1.2",

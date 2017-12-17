@@ -31,3 +31,7 @@ client.updatePresence({
   instance: true,
 });
 ```
+
+In browser you can import/require it as `discord-rich-presence/browser`.
+However, it should be noted that currently using rich presence in browser is
+a feature whitelisted by Discord, and you will most likely be unable to use it.

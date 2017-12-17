@@ -1,3 +1,4 @@
 node_modules
 test.js
-browser.js
+webpack.config.js
+README.md

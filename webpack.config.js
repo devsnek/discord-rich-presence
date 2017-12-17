@@ -21,7 +21,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.resolve('.'),
-    filename: `browser${prod ? '.min' : ''}.js`,
+    filename: 'browser.js',
     library: 'DiscordRichPresence',
     libraryTarget: 'umd',
   },
