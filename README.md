@@ -28,7 +28,7 @@ client.updatePresence({
   endTimestamp: Date.now() + 1337,
   largeImageKey: 'snek_large',
   smallImageKey: 'snek_small',
-  instance: true,
+  instance: true
 });
 ```
 
