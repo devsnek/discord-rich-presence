@@ -1,8 +1,11 @@
+'use strict';
+
 const Discord = require('discord-rpc');
 const EventEmitter = require('events');
+
 const browser = typeof window !== 'undefined';
 
-function makeClient(id) {
+function makeClient(clientId) {
   const rpc = new Discord.Client({ transport: browser ? 'websocket' : 'ipc' });
 
   let connected = false;
@@ -10,10 +13,11 @@ function makeClient(id) {
 
   const instance = new class RP extends EventEmitter {
     updatePresence(d) {
-      if (connected)
+      if (connected) {
         rpc.setActivity(d).catch((e) => this.emit('error', e));
-      else
+      } else {
         activityCache = d;
+      }
     }
 
     reply(user, response) {
@@ -25,22 +29,22 @@ function makeClient(id) {
         case 'NO':
         case 'IGNORE':
           rpc.closeJoinRequest(user).catch(handle);
+          break;
+        default:
+          throw new RangeError('unknown response');
       }
     }
 
     disconnect() {
       rpc.destroy().catch((e) => this.emit('error', e));
     }
-  };
+  }();
 
-  rpc.login(id)
+  rpc.login({ clientId })
     .then(() => {
       instance.emit('connected');
       connected = true;
-      if (activityCache) {
-        rpc.setActivity(activityCache).catch((e) => instance.emit('error', e));
-        activityCache = null;
-      }
+
       rpc.subscribe('ACTIVITY_JOIN', ({ secret }) => {
         instance.emit('join', secret);
       });
@@ -50,6 +54,11 @@ function makeClient(id) {
       rpc.subscribe('ACTIVITY_JOIN_REQUEST', (user) => {
         instance.emit('joinRequest', user);
       });
+
+      if (activityCache) {
+        rpc.setActivity(activityCache).catch((e) => instance.emit('error', e));
+        activityCache = null;
+      }
     })
     .catch((e) => instance.emit('error', e));
 

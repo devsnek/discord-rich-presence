@@ -1,3 +1,5 @@
+'use strict';
+
 const client = require('.')('180984871685062656');
 
 client.on('join', (secret) => {
@@ -9,10 +11,11 @@ client.on('spectate', (secret) => {
 });
 
 client.on('joinRequest', (user) => {
-  if (user.discriminator === '1337')
+  if (user.discriminator === '1337') {
     client.reply(user, 'YES');
-  else
+  } else {
     client.reply(user, 'IGNORE');
+  }
 });
 
 client.on('connected', () => {
@@ -21,8 +24,7 @@ client.on('connected', () => {
   client.updatePresence({
     state: 'slithering',
     details: '🐍',
-    startTimestamp: Date.now(),
-    endTimestamp: Date.now() + 1337,
+    startTimestamp: new Date(),
     largeImageKey: 'snek_large',
     smallImageKey: 'snek_small',
     partyId: 'snek_party',
@@ -31,7 +33,6 @@ client.on('connected', () => {
     matchSecret: 'slithers',
     joinSecret: 'boop',
     spectateSecret: 'sniff',
-    instance: true,
   });
 });
 
