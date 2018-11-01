@@ -6,7 +6,7 @@ const EventEmitter = require('events');
 const browser = typeof window !== 'undefined';
 
 function makeClient(clientId) {
-  const rpc = new Discord.Client({ transport: browser ? 'websocket' : 'ipc' });
+  let rpc = new Discord.Client({ transport: browser ? 'websocket' : 'ipc' });
 
   let connected = false;
   let activityCache = null;
@@ -37,6 +37,34 @@ function makeClient(clientId) {
 
     disconnect() {
       rpc.destroy().catch((e) => this.emit('error', e));
+      connected = false;
+    }
+
+    reconnect() {
+        rpc = new Discord.Client({ transport: browser ? 'websocket' : 'ipc' });
+        if(connected === false) {
+            rpc.login({clientId})
+                .then(() => {
+                    instance.emit('connected');
+                    connected = true;
+
+                    rpc.subscribe('ACTIVITY_JOIN', ({secret}) => {
+                        instance.emit('join', secret);
+                    });
+                    rpc.subscribe('ACTIVITY_SPECTATE', ({secret}) => {
+                        instance.emit('spectate', secret);
+                    });
+                    rpc.subscribe('ACTIVITY_JOIN_REQUEST', (user) => {
+                        instance.emit('joinRequest', user);
+                    });
+
+                    if (activityCache) {
+                        rpc.setActivity(activityCache).catch((e) => instance.emit('error', e));
+                        activityCache = null;
+                    }
+                })
+                .catch((e) => instance.emit('error', e));
+        }
     }
   }();
 
