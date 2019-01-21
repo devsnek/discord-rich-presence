@@ -40,6 +40,8 @@ function makeClient(clientId) {
     }
   }();
 
+  rpc.on('error', (e) => instance.emit('error', e));
+
   rpc.login({ clientId })
     .then(() => {
       instance.emit('connected');
