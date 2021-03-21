@@ -11,26 +11,30 @@
   </p>
 </div>
 
-# Discord Rich Presence
+# Discord Rich Presence Typescript
+
+**this is an fork from** [devsnek/discord-rich-presence](https://github.com/devsnek/discord-rich-presence) just with typescript support
 
 A simple wrapper around [discord-rpc](https://npmjs.org/discord-rpc)
 
 ### Example
 
 ```javascript
-const client = require('discord-rich-presence')('180984871685062656');
+const client = require("discord-rich-presence-typescript")(
+	"180984871685062656"
+);
 
 client.updatePresence({
-  state: 'slithering',
-  details: '🐍',
-  startTimestamp: Date.now(),
-  endTimestamp: Date.now() + 1337,
-  largeImageKey: 'snek_large',
-  smallImageKey: 'snek_small',
-  instance: true,
+	state: "slithering",
+	details: "🐍",
+	startTimestamp: Date.now(),
+	endTimestamp: Date.now() + 1337,
+	largeImageKey: "snek_large",
+	smallImageKey: "snek_small",
+	instance: true,
 });
 ```
 
-In browser you can import/require it as `discord-rich-presence/browser`.
+In browser you can import/require it as `discord-rich-presence-typescript/browser`.
 However, it should be noted that currently using rich presence in browser is
 a feature whitelisted by Discord, and you will most likely be unable to use it.

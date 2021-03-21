@@ -1,5 +1,5 @@
 {
-	"name": "discord-rich-presence",
+	"name": "discord-rich-presence-typescript",
 	"version": "0.0.8",
 	"description": "rich presence wrapper for discord-rpc",
 	"main": "index.js",
@@ -12,7 +12,7 @@
 	"types": "./dist/index.d.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/devsnek/discord-rich-presence.git"
+		"url": "git+https://github.com/devsamuelv/discord-rich-presence.git"
 	},
 	"keywords": [
 		"discord",
@@ -20,12 +20,12 @@
 		"presence",
 		"rpc"
 	],
-	"author": "snek <me@gus.host>",
+	"author": "DevSamuelV",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/devsnek/discord-rich-presence/issues"
+		"url": "https://github.com/devsamuelv/discord-rich-presence/issues"
 	},
-	"homepage": "https://github.com/devsnek/discord-rich-presence#readme",
+	"homepage": "https://github.com/devsamuelv/discord-rich-presence#readme",
 	"dependencies": {
 		"discord-rpc": "github:discordjs/rpc"
 	},
