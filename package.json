@@ -1,35 +1,36 @@
 {
-  "name": "discord-rich-presence",
-  "version": "0.0.8",
-  "description": "rich presence wrapper for discord-rpc",
-  "main": "index.js",
-  "unpkg": "browser.js",
-  "jsdelivr": "browser.js",
-  "scripts": {
-    "build:browser": "webpack",
-    "prepublishOnly": "env NODE_ENV=production npm run build:browser"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devsnek/discord-rich-presence.git"
-  },
-  "keywords": [
-    "discord",
-    "rich",
-    "presence",
-    "rpc"
-  ],
-  "author": "snek <me@gus.host>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/devsnek/discord-rich-presence/issues"
-  },
-  "homepage": "https://github.com/devsnek/discord-rich-presence#readme",
-  "dependencies": {
-    "discord-rpc": "github:discordjs/rpc"
-  },
-  "devDependencies": {
-    "uglifyjs-webpack-plugin": "^1.1.2",
-    "webpack": "^3.10.0"
-  }
+	"name": "discord-rich-presence",
+	"version": "0.0.8",
+	"description": "rich presence wrapper for discord-rpc",
+	"main": "index.js",
+	"unpkg": "browser.js",
+	"jsdelivr": "browser.js",
+	"scripts": {
+		"build:browser": "webpack",
+		"prepublishOnly": "env NODE_ENV=production npm run build:browser"
+	},
+	"types": "./dist/index.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/devsnek/discord-rich-presence.git"
+	},
+	"keywords": [
+		"discord",
+		"rich",
+		"presence",
+		"rpc"
+	],
+	"author": "snek <me@gus.host>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/devsnek/discord-rich-presence/issues"
+	},
+	"homepage": "https://github.com/devsnek/discord-rich-presence#readme",
+	"dependencies": {
+		"discord-rpc": "github:discordjs/rpc"
+	},
+	"devDependencies": {
+		"uglifyjs-webpack-plugin": "^1.1.2",
+		"webpack": "^3.10.0"
+	}
 }
